@@ -1,5 +1,8 @@
 module Click where
 
+import Debug
+import Mouse
+import Signal exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
@@ -20,12 +23,14 @@ update action model = case action of
 
 -- VIEW
 view : Signal.Address Action -> Model -> Html
-view address model = div []
-    [ div [ textStyle ] [ text "Clique no numero para incrementar: " ]
-    , div [ countStyle 
-          , onClick address Increment ] [ text (toString model) ]
-    , button [ onClick address Reset ] [ text "Colocar a 0" ]
-    ]
+view address model =
+  let count = Debug.watch "Contagem" model in
+    div []
+      [ div [ textStyle ] [ text "Clique no numero para incrementar: " ]
+      , div [ countStyle 
+            , onClick address Increment ] [ text (toString count) ]
+      , button [ onClick address Reset ] [ text "Colocar a 0" ]
+      ]
 
 countStyle : Attribute
 countStyle = style
