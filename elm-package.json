@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "Counts the number of mouse clicks over the blue number.",
-    "repository": "https://github.com/ricardoMiranda/Click",
+    "repository": "https://github.com/ricardoMiranda/Click.git",
     "license": "MIT",
     "source-directories": [
         "."
